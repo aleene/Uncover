@@ -23,6 +23,9 @@
 
 @implementation UNCoveredFieldsViewController
 
+/////////// S T A R T   A D D ///////////
+#pragma mark UNUncoverViewNotification methods
+
 //  this method must be implemented to have the uncovering working.
 //  This method must be called for each view that might be covered by an appearing keyboard
 //  These calls are made in the textField delegate method textFieldDidBeginEditing: and
@@ -38,6 +41,7 @@
     //  send the notification with the userInfo
     [[NSNotificationCenter defaultCenter] postNotificationName:UN_UNCOVER_VIEW_NOTIFICATION object:self userInfo:userInfo];
 }
+/////////// E N D   A D D ///////////
 
 #pragma mark - TextView delegate methods
 

@@ -79,10 +79,10 @@
     self.UNscrollPosition = [[info objectForKey:UN_SCROLL_POSITION] integerValue];
     //  is the keyboard already on screen?
     if (self.UNkeyboardIsOnScreen)
-        // shift scrollview for newly selected view
+        // shift scrollview for newly selected field
         [self UNshiftScrollView];
     //  if not, wait for the keyboard notification
-    //  no action needs to be taken for this view
+    //  no action needs to be taken yet
 }
 
 //  determine the coordinated that needs to be uncovered
@@ -94,7 +94,6 @@
     if (self.UNscrollView) {
         // do we have a view to uncover?
         if (self.UNviewToUncover != nil) {
-            // NSLog(@"ViewToUncover %f %f", viewToUnCover.frame.origin.x, viewToUnCover.frame.origin.y);
             //  define the point that must be uncovered
             if (self.UNscrollPosition == UNScrollPositionTop)
                 //  The top point of the view must be at the top of the scrollview
@@ -130,16 +129,18 @@
     //  The point that needs to uncovered
     CGPoint UNpointToUncover = [self UNfindObscuredPoint];
     //  The verticalScrollOffset determines how much the scrollView should be scrolled
-    //  It is initialised with the coordinate of the iew that must be uncovered
+    //  It is initialised with the coordinate of the view that must be uncovered
     CGPoint verticalScrollOffset = UNpointToUncover;
     
     //  do we need to scroll at all? If not stop the method
     if (verticalScrollOffset.y != 0.0) {
-        // define the rectantangle that the keyboard obscures
+        // define the rectangle that the keyboard obscures
         CGRect obscuringRect = CGRectMake(0, self.UNscrollView.frame.size.height - self.keyboardHeight, self.UNscrollView.frame.size.width, self.keyboardHeight);
-        // NSLog(@"Obscuring Rect : x %f, y %f width %f, height %f", obscuringRect.origin.x, obscuringRect.origin.y, obscuringRect.size.width, keyboardHeight);
         
+        //  this is the position, when the scrollview has not scrolled
         [self UNfindObscuredPoint];
+        //  it should be corrrected by the current scrollposition
+        UNpointToUncover.y -= self.UNscrollView.contentOffset.y;
         
         //  check if the point is covered by the keyboard
         if (CGRectContainsPoint(obscuringRect, UNpointToUncover) ) {
@@ -156,14 +157,6 @@
             else if (self.UNscrollPosition == UNScrollPositionBottom)
                 //  determine the point just above the keyboard
                 verticalScrollOffset = CGPointMake(0.0, self.keyboardHeight - (self.UNscrollView.frame.size.height - verticalScrollOffset.y) + UN_SCROLLING_MARGIN);
-            
-            // NSLog(@"ScrollView origin: x %f, y %f width %f, height %f", self.scrollView.frame.origin.x, self.scrollView.frame.origin.y, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
-            
-            
-            //  Define the point that might be hidden by the appearing keyboard
-            //  this should become the textfield that is hidden by the keyboard
-            //  the point might be the lower right foint of that textfield
-            // NSLog(@"Hidden Point : x %f, y %f", self.activePoint.x, self.activePoint.y);
             
             //  make the point hidden by the keyboard visible
             [self.UNscrollView setContentOffset:verticalScrollOffset animated:YES];
