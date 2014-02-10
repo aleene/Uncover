@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5186FCEF18A8F8FA001C763B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5186FCEE18A8F8FA001C763B /* Main.storyboard */; };
 		51F1C24C18A8E9C200654912 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F1C24B18A8E9C200654912 /* Foundation.framework */; };
 		51F1C24E18A8E9C200654912 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F1C24D18A8E9C200654912 /* CoreGraphics.framework */; };
 		51F1C25018A8E9C200654912 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F1C24F18A8E9C200654912 /* UIKit.framework */; };
 		51F1C25618A8E9C200654912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51F1C25418A8E9C200654912 /* InfoPlist.strings */; };
 		51F1C25818A8E9C200654912 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1C25718A8E9C200654912 /* main.m */; };
 		51F1C25C18A8E9C200654912 /* UNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1C25B18A8E9C200654912 /* UNAppDelegate.m */; };
-		51F1C25F18A8E9C200654912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51F1C25D18A8E9C200654912 /* Main.storyboard */; };
 		51F1C26218A8E9C200654912 /* UNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1C26118A8E9C200654912 /* UNViewController.m */; };
 		51F1C26418A8E9C200654912 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51F1C26318A8E9C200654912 /* Images.xcassets */; };
 		51F1C26B18A8E9C200654912 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F1C26A18A8E9C200654912 /* XCTest.framework */; };
@@ -21,6 +21,7 @@
 		51F1C26D18A8E9C200654912 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F1C24F18A8E9C200654912 /* UIKit.framework */; };
 		51F1C27518A8E9C200654912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51F1C27318A8E9C200654912 /* InfoPlist.strings */; };
 		51F1C27718A8E9C200654912 /* UncoverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1C27618A8E9C200654912 /* UncoverTests.m */; };
+		51F1C28318A8EBCF00654912 /* UNCoveredFieldsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1C28218A8EBCF00654912 /* UNCoveredFieldsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5186FCEE18A8F8FA001C763B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		51F1C24818A8E9C200654912 /* Uncover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uncover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51F1C24B18A8E9C200654912 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		51F1C24D18A8E9C200654912 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -44,7 +46,6 @@
 		51F1C25918A8E9C200654912 /* Uncover-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Uncover-Prefix.pch"; sourceTree = "<group>"; };
 		51F1C25A18A8E9C200654912 /* UNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNAppDelegate.h; sourceTree = "<group>"; };
 		51F1C25B18A8E9C200654912 /* UNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNAppDelegate.m; sourceTree = "<group>"; };
-		51F1C25E18A8E9C200654912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51F1C26018A8E9C200654912 /* UNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNViewController.h; sourceTree = "<group>"; };
 		51F1C26118A8E9C200654912 /* UNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNViewController.m; sourceTree = "<group>"; };
 		51F1C26318A8E9C200654912 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -53,6 +54,9 @@
 		51F1C27218A8E9C200654912 /* UncoverTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UncoverTests-Info.plist"; sourceTree = "<group>"; };
 		51F1C27418A8E9C200654912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		51F1C27618A8E9C200654912 /* UncoverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UncoverTests.m; sourceTree = "<group>"; };
+		51F1C28018A8E9F600654912 /* UNUncoverViewNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNUncoverViewNotification.h; sourceTree = "<group>"; };
+		51F1C28118A8EBCF00654912 /* UNCoveredFieldsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNCoveredFieldsViewController.h; sourceTree = "<group>"; };
+		51F1C28218A8EBCF00654912 /* UNCoveredFieldsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNCoveredFieldsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +116,14 @@
 		51F1C25118A8E9C200654912 /* Uncover */ = {
 			isa = PBXGroup;
 			children = (
+				5186FCEE18A8F8FA001C763B /* Main.storyboard */,
 				51F1C25A18A8E9C200654912 /* UNAppDelegate.h */,
 				51F1C25B18A8E9C200654912 /* UNAppDelegate.m */,
-				51F1C25D18A8E9C200654912 /* Main.storyboard */,
+				51F1C28018A8E9F600654912 /* UNUncoverViewNotification.h */,
 				51F1C26018A8E9C200654912 /* UNViewController.h */,
 				51F1C26118A8E9C200654912 /* UNViewController.m */,
+				51F1C28118A8EBCF00654912 /* UNCoveredFieldsViewController.h */,
+				51F1C28218A8EBCF00654912 /* UNCoveredFieldsViewController.m */,
 				51F1C26318A8E9C200654912 /* Images.xcassets */,
 				51F1C25218A8E9C200654912 /* Supporting Files */,
 			);
@@ -229,9 +236,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5186FCEF18A8F8FA001C763B /* Main.storyboard in Resources */,
 				51F1C26418A8E9C200654912 /* Images.xcassets in Resources */,
 				51F1C25618A8E9C200654912 /* InfoPlist.strings in Resources */,
-				51F1C25F18A8E9C200654912 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +260,7 @@
 				51F1C25818A8E9C200654912 /* main.m in Sources */,
 				51F1C25C18A8E9C200654912 /* UNAppDelegate.m in Sources */,
 				51F1C26218A8E9C200654912 /* UNViewController.m in Sources */,
+				51F1C28318A8EBCF00654912 /* UNCoveredFieldsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,14 +289,6 @@
 				51F1C25518A8E9C200654912 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		51F1C25D18A8E9C200654912 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				51F1C25E18A8E9C200654912 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		51F1C27318A8E9C200654912 /* InfoPlist.strings */ = {
@@ -463,6 +463,7 @@
 				51F1C27C18A8E9C200654912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51F1C27D18A8E9C200654912 /* Build configuration list for PBXNativeTarget "UncoverTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +472,7 @@
 				51F1C27F18A8E9C200654912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
