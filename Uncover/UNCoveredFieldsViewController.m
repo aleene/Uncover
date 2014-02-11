@@ -34,7 +34,7 @@
 - (void)sendUncoverNotificationForView:(UIView *)view
 {
     //  set the desired scroll position
-    NSNumber *UNScrollPositionAsNumber = [NSNumber numberWithInt:UNScrollPositionTop];
+    NSNumber *UNScrollPositionAsNumber = [NSNumber numberWithInt:UNScrollPositionMiddle];
     //  setup the notification info
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:view, UN_VIEW_TO_UNCOVER,
                               UNScrollPositionAsNumber, UN_SCROLL_POSITION, nil];
