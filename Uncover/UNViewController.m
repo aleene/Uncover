@@ -94,17 +94,8 @@
     if (self.UNscrollView) {
         // do we have a view to uncover?
         if (self.UNviewToUncover != nil) {
-            //  define the point that must be uncovered
-            if (self.UNscrollPosition == UNScrollPositionTop)
-                //  The top point of the view must be at the top of the scrollview
-                UNpointToUncover = CGPointMake(self.UNviewToUncover.frame.origin.x, self.UNviewToUncover.frame.origin.y);
-            else if (self.UNscrollPosition == UNScrollPositionMiddle)
-                UNpointToUncover = CGPointMake(self.UNviewToUncover.frame.origin.x, self.UNviewToUncover.frame.origin.y + self.UNviewToUncover.frame.size.height/2);
-
-            else if (self.UNscrollPosition == UNScrollPositionBottom)
-                //  The bottom point of the view must be at the bottom of the visible scroll view, above the keyboard
-                //  This takes into account the current scroll position, which prevents to much scrolling
-                UNpointToUncover = CGPointMake(self.UNviewToUncover.frame.origin.x, self.UNviewToUncover.frame.origin.y + self.UNviewToUncover.frame.size.height - self.UNscrollView.contentOffset.y);
+            //  calculate the lower point of the field
+            UNpointToUncover = CGPointMake(self.UNviewToUncover.frame.origin.x, self.UNviewToUncover.frame.origin.y + self.UNviewToUncover.frame.size.height - self.UNscrollView.contentOffset.y);
             
             //  determine the hierarchy offset between the view to uncover and the UNscrollview
             CGPoint hierachyOffset = [self UNaddCoordinatesOfView:self.UNviewToUncover.superview];
@@ -151,8 +142,8 @@
 
         //  should we scroll to the top?  (note we will only scroll vertically)
         if (self.UNscrollPosition == UNScrollPositionTop)
-            //  correct for the scrolling margin
-                verticalScrollOffset = CGPointMake(0.0, UNpointToUncover.y - self.UNscrollView.frame.origin.y - UN_SCROLLING_MARGIN);
+            //  correct for the scrolling margin, scroll to teh top of the field
+                verticalScrollOffset = CGPointMake(0.0, UNpointToUncover.y - self.UNviewToUncover.frame.size.height - self.UNscrollView.frame.origin.y - UN_SCROLLING_MARGIN);
         //  should we scroll to the middle? (note we will only scroll vertically)
         else if (self.UNscrollPosition == UNScrollPositionMiddle)
             //  scroll only half of the distance between the top of the scrollview and the viewToUncover
