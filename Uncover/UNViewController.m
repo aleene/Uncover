@@ -140,9 +140,6 @@
     //  do we need to scroll at all? (is this check usefull?)
     if (verticalScrollOffset.y != 0.0) {
         if (UN_DEBUG) NSLog(@"Scrolling required");
-        //  define the rectangle that the keyboard obscures
-        //  in the coordinates of the superview of the scrollview
-        CGRect obscuringRect = CGRectMake(0, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight + self.UNscrollView.contentOffset.y, self.UNscrollView.frame.size.width, self.keyboardHeight);
         if (UN_DEBUG) NSLog(@"Keyboard obscured %f to %f", self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y);
 
         //  The uncover point should be corrected for the current scrollposition
@@ -157,7 +154,7 @@
         if (UN_DEBUG) NSLog(@"Scrollview height %f", self.UNscrollView.frame.size.height);
 
         //  check if the point is covered by the keyboard
-        if (CGRectContainsPoint(obscuringRect, UNpointToUncover) ) {
+        if (UNpointToUncover.y >= self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight) {
             if (UN_DEBUG) NSLog(@"Point is covered by the Keyboard");
 
             //  should we scroll to the top?  (note we will only scroll vertically)
