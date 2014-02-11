@@ -142,10 +142,11 @@
         if (UN_DEBUG) NSLog(@"Scrolling required");
         //  define the rectangle that the keyboard obscures
         //  in the coordinates of the superview of the scrollview
-        CGRect obscuringRect = CGRectMake(0, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight, self.UNscrollView.frame.size.width, self.keyboardHeight);
+        CGRect obscuringRect = CGRectMake(0, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight + self.UNscrollView.contentOffset.y, self.UNscrollView.frame.size.width, self.keyboardHeight);
         if (UN_DEBUG) NSLog(@"Keyboard obscured %f to %f", self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y);
 
-        //  it should be corrected by the current scrollposition
+        //  The uncover point should be corrected for the current scrollposition
+        //  problem is then that is scrolls for each field even when it has already been uncovered
         UNpointToUncover.y += self.UNscrollView.contentOffset.y;
         if (UN_DEBUG) NSLog(@"Point to uncover %f", UNpointToUncover.y);
 
