@@ -152,7 +152,7 @@
         //  should we scroll to the top?  (note we will only scroll vertically)
         if (self.UNscrollPosition == UNScrollPositionTop)
             //  correct for the scrolling margin
-                verticalScrollOffset = CGPointMake(0.0, UNpointToUncover.y - UN_SCROLLING_MARGIN);
+                verticalScrollOffset = CGPointMake(0.0, UNpointToUncover.y - self.UNscrollView.frame.origin.y - UN_SCROLLING_MARGIN);
         //  should we scroll to the middle? (note we will only scroll vertically)
         else if (self.UNscrollPosition == UNScrollPositionMiddle)
             //  scroll only half of the distance between the top of the scrollview and the viewToUncover
