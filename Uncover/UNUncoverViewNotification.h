@@ -27,5 +27,7 @@ typedef enum {
 //  either the distance between the top of the keyboard and the bottom of the uncovered view (UNScrollPositionBottom)
 //  or the the distance between the top of the scrollview ad the top of the uncoverd view (UNScrollPositionTop)
 #define UN_SCROLLING_MARGIN 0
+//  Show debug messages
+#define UN_DEBUG YES
 
 #endif
