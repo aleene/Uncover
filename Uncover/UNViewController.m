@@ -160,7 +160,7 @@
         //  should we scroll to the bottom? (note we will only scroll vertically)
         else if (self.UNscrollPosition == UNScrollPositionBottom)
             //  determine the point just above the keyboard
-            verticalScrollOffset = CGPointMake(0.0, self.keyboardHeight - self.UNscrollView.frame.size.height - self.UNscrollView.frame.origin.y + verticalScrollOffset.y + UN_SCROLLING_MARGIN + self.UNscrollView.contentOffset.y);
+            verticalScrollOffset = CGPointMake(0.0, self.keyboardHeight - self.UNscrollView.frame.size.height - self.UNscrollView.frame.origin.y + UNpointToUncover.y + UN_SCROLLING_MARGIN + self.UNscrollView.contentOffset.y);
             
         if (UN_DEBUG) NSLog(@"Final vertical scroll offset %f", verticalScrollOffset.y);
         
