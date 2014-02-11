@@ -130,55 +130,46 @@
 
 - (void)UNshiftScrollView
 {
+    CGPoint verticalScrollOffset;
     //  this is the position of the obscured point, when the scrollview has yet not scrolled
     CGPoint UNpointToUncover = [self UNfindObscuredPoint];
     //  The verticalScrollOffset determines how much the scrollView should be scrolled
     //  It is initialised with the coordinate of the view that must be uncovered
-    CGPoint verticalScrollOffset = UNpointToUncover;
-    if (UN_DEBUG) NSLog(@"Vertical scroll offset required by obscured point %f", verticalScrollOffset.y);
+    if (UN_DEBUG) NSLog(@"Point to uncover (scroll coords) %f", UNpointToUncover.y);
     
-    //  do we need to scroll at all? (is this check usefull?)
-    if (verticalScrollOffset.y != 0.0) {
-        if (UN_DEBUG) NSLog(@"SCROLLING REQUIRED");
-        if (UN_DEBUG) NSLog(@"Keyboard obscured (superview coords) %f to %f", self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y);
+    if (UN_DEBUG) NSLog(@"SCROLLING REQUIRED");
+    if (UN_DEBUG) NSLog(@"Keyboard obscured (superview coords) %f to %f", self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y);
 
-        if (UN_DEBUG) NSLog(@"Point to uncover (scroll coords) %f", UNpointToUncover.y);
+    if (UN_DEBUG) NSLog(@"Current scroll offset (superview coords) %f", self.UNscrollView.contentOffset.y);
+    if (UN_DEBUG) NSLog(@"Keyboard height %d", self.keyboardHeight);
+    if (UN_DEBUG) NSLog(@"Scrollview origin %f", self.UNscrollView.frame.origin.y);
+    if (UN_DEBUG) NSLog(@"Scrollview height %f", self.UNscrollView.frame.size.height);
 
-        if (UN_DEBUG) NSLog(@"Current scroll offset (superview coords) %f", self.UNscrollView.contentOffset.y);
-        if (UN_DEBUG) NSLog(@"Scroll offset corrected for current scroll position %f", verticalScrollOffset.y);
-        if (UN_DEBUG) NSLog(@"Keyboard height %d", self.keyboardHeight);
-        if (UN_DEBUG) NSLog(@"Scrollview origin %f", self.UNscrollView.frame.origin.y);
-        if (UN_DEBUG) NSLog(@"Scrollview height %f", self.UNscrollView.frame.size.height);
+    //  check if the point is covered by the keyboard in current scroll position
+    if (UNpointToUncover.y >= self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight) {
+        if (UN_DEBUG) NSLog(@"Point is covered by the Keyboard in current scroll position");
 
-        //  check if the point is covered by the keyboard in current scroll position
-        if (UNpointToUncover.y >= self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight) {
-            if (UN_DEBUG) NSLog(@"Point is covered by the Keyboard in current scroll position");
-
-            //  should we scroll to the top?  (note we will only scroll vertically)
-            if (self.UNscrollPosition == UNScrollPositionTop)
-                //  correct for the scrolling margin
-                verticalScrollOffset = CGPointMake(0.0, verticalScrollOffset.y - UN_SCROLLING_MARGIN);
-            //  should we scroll to the middle? (note we will only scroll vertically)
-            else if (self.UNscrollPosition == UNScrollPositionMiddle)
-                //  scroll only half of the distance between the top of the scrollview and the viewToUncover
-                verticalScrollOffset = CGPointMake(0.0, verticalScrollOffset.y / 2);
-            //  should we scroll to the bottom? (note we will only scroll vertically)
-            else if (self.UNscrollPosition == UNScrollPositionBottom)
-                //  determine the point just above the keyboard
-                verticalScrollOffset = CGPointMake(0.0, self.keyboardHeight - self.UNscrollView.frame.size.height - self.UNscrollView.frame.origin.y + verticalScrollOffset.y + UN_SCROLLING_MARGIN + self.UNscrollView.contentOffset.y);
+        //  should we scroll to the top?  (note we will only scroll vertically)
+        if (self.UNscrollPosition == UNScrollPositionTop)
+            //  correct for the scrolling margin
+                verticalScrollOffset = CGPointMake(0.0, UNpointToUncover.y - UN_SCROLLING_MARGIN);
+        //  should we scroll to the middle? (note we will only scroll vertically)
+        else if (self.UNscrollPosition == UNScrollPositionMiddle)
+            //  scroll only half of the distance between the top of the scrollview and the viewToUncover
+            verticalScrollOffset = CGPointMake(0.0, UNpointToUncover.y - (self.UNscrollView.frame.origin.y + (self.UNscrollView.frame.size.height - self.keyboardHeight - self.UNscrollView.frame.origin.y) / 2));
+        //  should we scroll to the bottom? (note we will only scroll vertically)
+        else if (self.UNscrollPosition == UNScrollPositionBottom)
+            //  determine the point just above the keyboard
+            verticalScrollOffset = CGPointMake(0.0, self.keyboardHeight - self.UNscrollView.frame.size.height - self.UNscrollView.frame.origin.y + verticalScrollOffset.y + UN_SCROLLING_MARGIN + self.UNscrollView.contentOffset.y);
             
-            if (UN_DEBUG) NSLog(@"Final vertical scroll offset %f", verticalScrollOffset.y);
-            
-            if (UN_DEBUG) NSLog(@"SCROLLING");
-            //  make the point hidden by the keyboard visible
-            [self.UNscrollView setContentOffset:verticalScrollOffset animated:YES];
+        if (UN_DEBUG) NSLog(@"Final vertical scroll offset %f", verticalScrollOffset.y);
+        
+        if (UN_DEBUG) NSLog(@"SCROLLING");
+        //  make the point hidden by the keyboard visible
+        [self.UNscrollView setContentOffset:verticalScrollOffset animated:YES];
         }
-        else
-            if (UN_DEBUG) NSLog(@"Point is NOT covered by the Keyboard in current scroll position");
-
-    }
     else
-        if (UN_DEBUG) NSLog(@"NO scrolling required");
+        if (UN_DEBUG) NSLog(@"Point is NOT covered by the Keyboard in current scroll position");
 
 }
 - (void)UNkeyboardWasShown:(NSNotification*)aNotification
