@@ -18,6 +18,7 @@ The solution has been gobbled together from ideas found on the Internet. I am no
 * the user can specify how far the fields should stay from the top or bottom.
 * the scrollView can have any height.
 * an app can have multiple scrollviews, which act upon their child textfields.
+
 # How to implement
 Essentially this solution can be used by copying the relevant code into your own code. This concerns three files:
 
@@ -30,17 +31,20 @@ parts of this file should be added to the viewController that contains the textf
 * add [self sendUncoverNotificationForView:(UIView *)textView]; to your textViewDidBeginEditing: delegate method.
 * add [self sendUncoverNotificationForView:(UIView *)textField]; to your textFieldDidBeginEditing: delegate method.
 * do not forget to set the textfield and textview delegates to self in your viewDidLoad method.
+
 ## UNViewController.m
 parts of this file should be added to the ViewController that contains the scrollView.
 * add the line #import "UNUncoverViewNotification.h"
 * add all the properties between START ADD and END ADD.
 * add all the methods between START ADD and END ADD.
 * add the line [self UNsetupReceptionOfUncoverViewNotification]; to your viewDidLoad method.
+
 ## How to use
 * do not forget to link the scrollview with the UNscrollView property in the scrollView viewController that must be scrolled.
 * adjust the UN_SCROLLING_MARGIN to fit your needs in the UNUncoverViewNotification.h file
 * set the desired scrolling position in the sendUncoverNotificationForView: method. Options are: KAScrollPositionNone, UNScrollPositionTop, UNScrollPositionMiddle and UNScrollPositionBottom.
 * if you need multiple scrollers, then you could duplicate (and rename) UNUncoverViewNotification.h. Change the imports. I did not try this yet, so this is just theory.
+
 ## Limitations
 This solution works only if the viewControllers are in the same hierarchy, i.e. the ScrolViewViewController is a (grand-...)parent of the textFieldsViewController.
 the scrollView and the textFields are in the same hierarchy, i.e. the scrollView is a (grand-...)parent view of the textFields.
