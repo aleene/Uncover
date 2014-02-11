@@ -146,7 +146,7 @@
     if (UN_DEBUG) NSLog(@"Scrollview height %f", self.UNscrollView.frame.size.height);
 
     //  check if the point is covered by the keyboard in current scroll position
-    if (UNpointToUncover.y >= self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight) {
+    if (UNpointToUncover.y - self.UNscrollView.contentOffset.y >= self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight) {
         if (UN_DEBUG) NSLog(@"Point is covered by the Keyboard in current scroll position");
 
         //  should we scroll to the top?  (note we will only scroll vertically)
