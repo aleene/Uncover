@@ -139,23 +139,20 @@
     
     //  do we need to scroll at all? (is this check usefull?)
     if (verticalScrollOffset.y != 0.0) {
-        if (UN_DEBUG) NSLog(@"Scrolling required");
-        if (UN_DEBUG) NSLog(@"Keyboard obscured %f to %f", self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y);
+        if (UN_DEBUG) NSLog(@"SCROLLING REQUIRED");
+        if (UN_DEBUG) NSLog(@"Keyboard obscured (superview coords) %f to %f", self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight, self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y);
 
-        //  The uncover point should be corrected for the current scrollposition
-        //  problem is then that is scrolls for each field even when it has already been uncovered
-        UNpointToUncover.y += self.UNscrollView.contentOffset.y;
-        if (UN_DEBUG) NSLog(@"Point to uncover %f", UNpointToUncover.y);
+        if (UN_DEBUG) NSLog(@"Point to uncover (scroll coords) %f", UNpointToUncover.y);
 
-        if (UN_DEBUG) NSLog(@"Current scroll offset %f", self.UNscrollView.contentOffset.y);
+        if (UN_DEBUG) NSLog(@"Current scroll offset (superview coords) %f", self.UNscrollView.contentOffset.y);
         if (UN_DEBUG) NSLog(@"Scroll offset corrected for current scroll position %f", verticalScrollOffset.y);
         if (UN_DEBUG) NSLog(@"Keyboard height %d", self.keyboardHeight);
         if (UN_DEBUG) NSLog(@"Scrollview origin %f", self.UNscrollView.frame.origin.y);
         if (UN_DEBUG) NSLog(@"Scrollview height %f", self.UNscrollView.frame.size.height);
 
-        //  check if the point is covered by the keyboard
+        //  check if the point is covered by the keyboard in current scroll position
         if (UNpointToUncover.y >= self.UNscrollView.frame.size.height + self.UNscrollView.frame.origin.y - self.keyboardHeight) {
-            if (UN_DEBUG) NSLog(@"Point is covered by the Keyboard");
+            if (UN_DEBUG) NSLog(@"Point is covered by the Keyboard in current scroll position");
 
             //  should we scroll to the top?  (note we will only scroll vertically)
             if (self.UNscrollPosition == UNScrollPositionTop)
@@ -177,7 +174,7 @@
             [self.UNscrollView setContentOffset:verticalScrollOffset animated:YES];
         }
         else
-            if (UN_DEBUG) NSLog(@"Point is NOT covered by the Keyboard");
+            if (UN_DEBUG) NSLog(@"Point is NOT covered by the Keyboard in current scroll position");
 
     }
     else

@@ -28,6 +28,6 @@ typedef enum {
 //  or the the distance between the top of the scrollview ad the top of the uncoverd view (UNScrollPositionTop)
 #define UN_SCROLLING_MARGIN 0
 //  Show debug messages
-#define UN_DEBUG NO
+#define UN_DEBUG YES
 
 #endif
